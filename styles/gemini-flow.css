@@ -1,0 +1,225 @@
+/* ==========================================================================
+   GEMINI FLOW - CANVAS & FLOATING DOCK STYLING (PURE & CLEAN)
+   Centered floating pill dock with 4 fluid animation modes + Contact Me
+   Strict Monochrome, Soft Rounded Glassmorphism, Zero Emojis
+   ========================================================================== */
+
+#gemini-flow-wrapper {
+  position: fixed;
+  inset: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 0;
+  pointer-events: none;
+  overflow: hidden;
+  background: transparent;
+}
+
+#gemini-flow-canvas {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: auto;
+  touch-action: pan-y;
+  opacity: 1;
+}
+
+/* ==========================================================================
+   FLOATING BOTTOM DOCK (CENTERED, MINIMALIST PILL)
+   ========================================================================== */
+
+.flow-hud {
+  position: fixed;
+  bottom: 28px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-mono);
+  max-width: 95vw;
+}
+
+.hud-panel {
+  background: var(--bg-card);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  border: 1px solid var(--border-medium);
+  border-radius: var(--radius-pill);
+  box-shadow: var(--shadow-lg);
+  padding: 6px 8px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  position: relative;
+  transition: all var(--transition-normal);
+}
+
+.hud-panel:hover {
+  border-color: var(--border-strong);
+}
+
+/* Flow Mode Selector - 4 Core Animations */
+.flow-mode-selector {
+  display: flex;
+  align-items: center;
+  gap: 3px;
+  background: var(--bg-secondary);
+  padding: 3px;
+  border-radius: var(--radius-pill);
+}
+
+.hud-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 7px 15px;
+  font-family: var(--font-mono);
+  font-size: 0.74rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--text-secondary);
+  background: transparent;
+  border: none;
+  border-radius: var(--radius-pill);
+  transition: all var(--transition-fast);
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+.hud-btn:hover {
+  color: var(--text-primary);
+  background: var(--bg-card);
+}
+
+.hud-btn.active {
+  background: var(--text-primary);
+  color: var(--bg-primary);
+  font-weight: 700;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.15);
+}
+
+/* Contact Me Button - Redirects to Transmit Packet */
+.hud-contact-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 18px;
+  background: var(--text-primary);
+  color: var(--bg-primary);
+  border-radius: var(--radius-pill);
+  font-family: var(--font-mono);
+  font-size: 0.76rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  transition: all var(--transition-fast);
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.12);
+  white-space: nowrap;
+}
+
+.hud-contact-btn svg {
+  width: 14px;
+  height: 14px;
+  stroke: currentColor;
+  fill: none;
+  stroke-width: 2;
+  transition: transform var(--transition-fast);
+}
+
+.hud-contact-btn:hover {
+  opacity: 0.88;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.2);
+}
+
+.hud-contact-btn:hover svg {
+  transform: translateX(2px);
+}
+
+/* Mobile adjustments - Buttery Smooth & Completely Responsive */
+@media (max-width: 640px) {
+  .flow-hud {
+    bottom: 12px;
+    width: calc(100% - 16px);
+    max-width: 440px;
+  }
+  .hud-panel {
+    width: 100%;
+    justify-content: space-between;
+    padding: 4px;
+    gap: 4px;
+    overflow-x: auto;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+    -webkit-overflow-scrolling: touch;
+  }
+  .hud-panel::-webkit-scrollbar {
+    display: none;
+  }
+  .flow-mode-selector {
+    display: flex;
+    align-items: center;
+    gap: 2px;
+    padding: 2px;
+    flex: 1;
+    justify-content: space-between;
+  }
+  .hud-btn {
+    padding: 6px 7px;
+    font-size: 0.62rem;
+    letter-spacing: 0.04em;
+    flex: 1;
+    text-align: center;
+    min-width: 0;
+  }
+  .hud-contact-btn {
+    padding: 6px 10px;
+    font-size: 0.64rem;
+    letter-spacing: 0.04em;
+    gap: 4px;
+    flex-shrink: 0;
+  }
+  .hud-contact-btn svg {
+    width: 12px;
+    height: 12px;
+  }
+}
+
+@media (max-width: 390px) {
+  .flow-hud {
+    bottom: 10px;
+    width: calc(100% - 12px);
+  }
+  .hud-panel {
+    padding: 3px;
+    gap: 3px;
+  }
+  .hud-btn {
+    padding: 5px 5px;
+    font-size: 0.58rem;
+    letter-spacing: 0.02em;
+  }
+  .hud-contact-btn {
+    padding: 5px 8px;
+    font-size: 0.60rem;
+    gap: 3px;
+  }
+  .hud-contact-btn svg {
+    width: 11px;
+    height: 11px;
+  }
+}
+
+@media (max-width: 330px) {
+  .hud-btn {
+    padding: 5px 3px;
+    font-size: 0.54rem;
+  }
+  .hud-contact-btn {
+    padding: 5px 6px;
+    font-size: 0.56rem;
+  }
+}

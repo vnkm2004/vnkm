@@ -1,0 +1,264 @@
+/* ==========================================================================
+   VNKM PORTFOLIO - DESIGN TOKENS & ROBOTIC TYPOGRAPHY (SMOOTH EDITION)
+   Follows strict 2-theme architecture: Pure White (Light) & Pure Black (Dark)
+   Robotic aesthetic with buttery smooth fluid UI (zero boxy artifacts)
+   Strictly monochrome (minimal coloring), zero emojis, fully animated.
+   ========================================================================== */
+
+@import url('https://fonts.googleapis.com/css2?family=Chakra+Petch:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=Orbitron:wght@400;500;600;700;800;900&family=Share+Tech+Mono&family=Space+Mono:ital,wght@0,400;0,700;1,400&display=swap');
+
+:root {
+  /* ROBOTIC & TECH TYPOGRAPHY SYSTEM */
+  --font-display: 'Orbitron', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-tech: 'Chakra Petch', sans-serif;
+  --font-mono: 'Share Tech Mono', 'Space Mono', monospace;
+  --font-code: 'Space Mono', 'Share Tech Mono', monospace;
+
+  --transition-fast: 160ms cubic-bezier(0.16, 1, 0.3, 1);
+  --transition-normal: 280ms cubic-bezier(0.16, 1, 0.3, 1);
+  --transition-slow: 500ms cubic-bezier(0.16, 1, 0.3, 1);
+
+  /* Silky Smooth Curved Radiuses */
+  --radius-xs: 6px;
+  --radius-sm: 10px;
+  --radius-md: 16px;
+  --radius-lg: 22px;
+  --radius-pill: 9999px;
+  --max-width: 1280px;
+
+  /* LIGHT THEME (White Background - Smooth Modern Minimal) */
+  --bg-primary: #ffffff;
+  --bg-secondary: #f6f6f8;
+  --bg-tertiary: #eeeeef;
+  --bg-card: rgba(255, 255, 255, 0.82);
+  --bg-card-hover: rgba(246, 246, 250, 0.94);
+  --bg-glass: rgba(255, 255, 255, 0.75);
+  --bg-glass-heavy: rgba(255, 255, 255, 0.92);
+
+  --text-primary: #050507;
+  --text-secondary: #4a4a52;
+  --text-muted: #71717a;
+  --text-inverse: #ffffff;
+
+  --border-subtle: rgba(0, 0, 0, 0.08);
+  --border-medium: rgba(0, 0, 0, 0.16);
+  --border-strong: rgba(0, 0, 0, 0.35);
+  --border-active: #050507;
+
+  --accent: #050507;
+  --accent-contrast: #ffffff;
+  --accent-soft: rgba(0, 0, 0, 0.05);
+
+  --flow-line: rgba(5, 5, 7, 0.75);
+  --flow-glow: rgba(0, 0, 0, 0.08);
+  --flow-particle: rgba(15, 15, 20, 0.65);
+
+  --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.04);
+  --shadow-md: 0 4px 20px rgba(0, 0, 0, 0.06);
+  --shadow-lg: 0 14px 38px rgba(0, 0, 0, 0.08);
+  --shadow-tech: 0 0 0 1px rgba(0, 0, 0, 0.08), 0 4px 24px rgba(0, 0, 0, 0.05);
+
+  --cursor-dot: #000000;
+  --cursor-ring: rgba(0, 0, 0, 0.28);
+  --cursor-trail: rgba(0, 0, 0, 0.12);
+}
+
+/* DARK THEME (Black Background - Smooth Cyber Dark) */
+[data-theme="dark"] {
+  --bg-primary: #000000;
+  --bg-secondary: #08080a;
+  --bg-tertiary: #121216;
+  --bg-card: rgba(10, 10, 14, 0.82);
+  --bg-card-hover: rgba(18, 18, 24, 0.94);
+  --bg-glass: rgba(5, 5, 8, 0.78);
+  --bg-glass-heavy: rgba(8, 8, 12, 0.94);
+
+  --text-primary: #ffffff;
+  --text-secondary: #a1a1aa;
+  --text-muted: #71717a;
+  --text-inverse: #000000;
+
+  --border-subtle: rgba(255, 255, 255, 0.1);
+  --border-medium: rgba(255, 255, 255, 0.2);
+  --border-strong: rgba(255, 255, 255, 0.45);
+  --border-active: #ffffff;
+
+  --accent: #ffffff;
+  --accent-contrast: #000000;
+  --accent-soft: rgba(255, 255, 255, 0.08);
+
+  --flow-line: rgba(255, 255, 255, 0.85);
+  --flow-glow: rgba(255, 255, 255, 0.15);
+  --flow-particle: rgba(245, 245, 250, 0.8);
+
+  --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.5);
+  --shadow-md: 0 4px 22px rgba(0, 0, 0, 0.75);
+  --shadow-lg: 0 16px 44px rgba(0, 0, 0, 0.95);
+  --shadow-tech: 0 0 0 1px rgba(255, 255, 255, 0.12), 0 4px 25px rgba(0, 0, 0, 0.85);
+
+  --cursor-dot: #ffffff;
+  --cursor-ring: rgba(255, 255, 255, 0.4);
+  --cursor-trail: rgba(255, 255, 255, 0.18);
+}
+
+/* ==========================================================================
+   RESET & FOUNDATIONS
+   ========================================================================== */
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-family: var(--font-tech);
+  font-size: 16px;
+  line-height: 1.5;
+  scroll-behavior: smooth;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  overflow-x: hidden;
+  width: 100%;
+  max-width: 100%;
+  transition: background-color var(--transition-normal), color var(--transition-normal);
+}
+
+body {
+  min-height: 100vh;
+  position: relative;
+  overflow-x: hidden;
+  width: 100%;
+  max-width: 100%;
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  cursor: default;
+}
+
+/* Scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--bg-primary);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--border-medium);
+  border-radius: var(--radius-pill);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--border-strong);
+}
+
+/* Selection */
+::selection {
+  background: var(--text-primary);
+  color: var(--bg-primary);
+}
+
+:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+
+/* Robotic Headings with Orbitron */
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-display);
+  color: var(--text-primary);
+  font-weight: 700;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+  line-height: 1.15;
+}
+
+p {
+  font-family: var(--font-tech);
+  color: var(--text-secondary);
+  font-size: 1.05rem;
+  letter-spacing: 0.01em;
+  line-height: 1.65;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+  transition: opacity var(--transition-fast), color var(--transition-fast);
+}
+
+button {
+  font-family: var(--font-tech);
+  cursor: pointer;
+  border: none;
+  background: none;
+  color: inherit;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+code, pre, .mono, .tech-mono {
+  font-family: var(--font-mono);
+  letter-spacing: -0.01em;
+}
+
+/* Tech Tag Helper */
+.tech-tag {
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+.tech-tag::before {
+  content: '//';
+  font-weight: 700;
+  color: var(--text-primary);
+}
+
+/* Container */
+.container {
+  width: 100%;
+  max-width: var(--max-width);
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 28px;
+  padding-right: 28px;
+}
+
+.section {
+  position: relative;
+  padding-top: 110px;
+  padding-bottom: 110px;
+  z-index: 2;
+}
+
+@media (max-width: 768px) {
+  .section {
+    padding-top: 64px;
+    padding-bottom: 64px;
+  }
+  .container {
+    padding-left: 18px;
+    padding-right: 18px;
+  }
+}
+
+@media (max-width: 480px) {
+  .section {
+    padding-top: 50px;
+    padding-bottom: 50px;
+  }
+  .container {
+    padding-left: 14px;
+    padding-right: 14px;
+  }
+}

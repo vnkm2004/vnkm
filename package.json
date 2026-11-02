@@ -1,0 +1,24 @@
+{
+  "name": "vnkm-portfolio",
+  "version": "1.0.0",
+  "description": "Vishwanath Naik K M (VNKM) - Animated Portfolio with Gemini Flow",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "start": "node serve.js"
+  },
+  "devDependencies": {
+    "vite": "^6.2.0"
+  },
+  "keywords": [
+    "portfolio",
+    "gemini-flow",
+    "animation",
+    "vnkm",
+    "minimalist"
+  ],
+  "author": "Vishwanath Naik K M <vnkm2004@gmail.com>",
+  "license": "MIT"
+}

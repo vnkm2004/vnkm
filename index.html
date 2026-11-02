@@ -1,0 +1,601 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>VNKM // VISHWANATH NAIK K M — Robotic Portfolio & Gemini Flow Engine</title>
+  <meta name="description" content="Personal portfolio and architectural blueprint of Vishwanath Naik K M (VNKM). Featuring real-time Gemini Flow generative canvas, video grafting engine, and strict monochrome themes.">
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' fill='%23050507'/><text x='50' y='65' font-size='44' font-family='monospace' font-weight='bold' fill='%23ffffff' text-anchor='middle'>V</text></svg>">
+  
+  <!-- Robotic Typography & Stylesheets -->
+  <link rel="stylesheet" href="styles/base.css">
+  <link rel="stylesheet" href="styles/gemini-flow.css">
+  <link rel="stylesheet" href="styles/components.css">
+  <link rel="stylesheet" href="styles/animations.css">
+</head>
+<body>
+
+  <!-- Custom Robotic Cursor -->
+  <div id="custom-cursor"></div>
+  <div id="custom-cursor-follower"></div>
+
+  <!-- ========================================================================
+       GEMINI FLOW ENGINE (BACKGROUND CANVAS)
+       ======================================================================== -->
+  <div id="gemini-flow-wrapper">
+    <canvas id="gemini-flow-canvas"></canvas>
+  </div>
+
+  <!-- ========================================================================
+       GEMINI FLOW FLOATING DOCK (4 FLUID MODES + CONTACT ME)
+       ======================================================================== -->
+  <aside class="flow-hud" aria-label="Gemini Flow Control Deck">
+    <div class="hud-panel">
+      <!-- 4 Core Flow Animation Modes -->
+      <div class="flow-mode-selector">
+        <button class="hud-btn active" data-flow-mode="aurora" title="Harmonic Wave Aurora">AURORA</button>
+        <button class="hud-btn" data-flow-mode="particles" title="Fluid Vector Stream">STREAM</button>
+        <button class="hud-btn" data-flow-mode="ribbons" title="Twisted 3D Ribbons">RIBBONS</button>
+        <button class="hud-btn" data-flow-mode="quantum" title="Geometric Cyber Lattice">LATTICE</button>
+      </div>
+
+      <!-- Contact Me Redirect to Transmit Packet -->
+      <a href="#contact" class="hud-contact-btn" id="hud-contact-btn" title="Redirect to Transmit Packet">
+        <svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+        <span>CONTACT ME</span>
+      </a>
+    </div>
+  </aside>
+
+  <!-- ========================================================================
+       TOP NAVIGATION BAR
+       ======================================================================== -->
+  <header class="site-header">
+    <div class="container nav-container">
+      <a href="#hero" class="brand-link" aria-label="VNKM Home">
+        <span class="brand-name">VNKM</span>
+      </a>
+
+      <!-- Section Navigation Links (Desktop) -->
+      <nav class="desktop-nav" aria-label="Main Navigation">
+        <ul class="nav-links">
+          <li><a href="#projects" class="nav-link">// 01 ARCHITECTURES</a></li>
+          <li><a href="#skills" class="nav-link">// 02 TECH MATRIX</a></li>
+          <li><a href="#about" class="nav-link">// 03 PHILOSOPHY</a></li>
+          <li><a href="#contact" class="nav-link">// 04 TRANSMIT</a></li>
+        </ul>
+      </nav>
+
+      <!-- Utility Controls -->
+      <div class="nav-controls">
+        <!-- Terminal Trigger -->
+        <button class="icon-btn" data-action="open-terminal" title="Launch Cyber CLI [~]" aria-label="Launch Cyber CLI">
+          <svg viewBox="0 0 24 24"><polyline points="4 17 10 11 4 5"/><line x1="12" y1="19" x2="20" y2="19"/></svg>
+        </button>
+
+        <!-- Theme Switcher (Strict 2 Themes: White Background & Black Background) -->
+        <button class="icon-btn theme-toggle-btn" title="Toggle White/Black Theme" aria-label="Toggle Theme">
+          <svg class="icon-sun" viewBox="0 0 24 24" style="display: none;"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+          <svg class="icon-moon" viewBox="0 0 24 24"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+        </button>
+
+        <!-- Mobile Menu Toggle Button -->
+        <button class="icon-btn mobile-menu-toggle" id="mobile-menu-toggle" title="Toggle Navigation Menu" aria-label="Toggle Menu" aria-expanded="false">
+          <svg class="icon-hamburger" viewBox="0 0 24 24"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+          <svg class="icon-close" viewBox="0 0 24 24" style="display: none;"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+        </button>
+      </div>
+    </div>
+
+    <!-- Mobile Navigation Drawer / Dropdown -->
+    <div class="mobile-nav-drawer" id="mobile-nav-drawer" aria-hidden="true">
+      <div class="mobile-nav-inner">
+        <ul class="mobile-nav-links">
+          <li><a href="#projects" class="mobile-nav-link">// 01 ARCHITECTURES</a></li>
+          <li><a href="#skills" class="mobile-nav-link">// 02 TECH MATRIX</a></li>
+          <li><a href="#about" class="mobile-nav-link">// 03 PHILOSOPHY</a></li>
+          <li><a href="#contact" class="mobile-nav-link">// 04 TRANSMIT</a></li>
+        </ul>
+        <div class="mobile-nav-actions">
+          <button class="btn-secondary" data-action="open-terminal" style="width: 100%; justify-content: center;">
+            <svg viewBox="0 0 24 24"><polyline points="4 17 10 11 4 5"/><line x1="12" y1="19" x2="20" y2="19"/></svg>
+            <span>LAUNCH CYBER CLI [~]</span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- ========================================================================
+       HERO SECTION
+       ======================================================================== -->
+  <section id="hero" class="hero-section">
+    <div class="radar-sweep"></div>
+    <div class="container hero-content">
+      
+      <div class="hero-status-pill">
+        <span class="status-dot"></span>
+        <span>SYSTEM ONLINE // OPERATOR: VISHWANATH NAIK K M</span>
+      </div>
+
+      <h1 class="hero-title">
+        VISHWANATH <br>
+        <span class="text-outline">NAIK K M</span>
+      </h1>
+
+      <p class="hero-tagline">
+        [ FULL-STACK ENGINEER // MOBILE ARCHITECT // DEEP LEARNING & AI SYSTEMS BUILDER ]
+      </p>
+
+      <p class="hero-description">
+        Specializing in high-performance commercial platforms including servcate.com and mrbiller.online, native cross-platform mobile systems with React Native & Expo, and advanced medical diagnostic AI models (CNNs, YOLO) for automated disease detection, digital image enhancement, and precision agriculture. Built with mathematical discipline, robust architecture, and zero color clutter.
+      </p>
+
+      <div class="hero-actions">
+        <a href="#projects" class="btn-primary">
+          <span>FEATURED ARCHITECTURES</span>
+          <svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </a>
+
+        <button class="btn-secondary" data-action="open-terminal">
+          <svg viewBox="0 0 24 24"><polyline points="4 17 10 11 4 5"/><line x1="12" y1="19" x2="20" y2="19"/></svg>
+          <span>LAUNCH CYBER CLI [~]</span>
+        </button>
+
+        <a href="#contact" class="btn-secondary">
+          <svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+          <span>TRANSMIT PACKET</span>
+        </a>
+      </div>
+
+      <!-- Telemetry Micro-Cards -->
+      <div class="hero-telemetry-grid">
+        <div class="telemetry-card">
+          <div class="telemetry-num" data-target="99.98" data-suffix="%" data-decimals="2">0%</div>
+          <div class="telemetry-label">SYSTEM AVAILABILITY</div>
+        </div>
+        <div class="telemetry-card">
+          <div class="telemetry-num" data-target="98.5" data-suffix="%" data-decimals="1">0%</div>
+          <div class="telemetry-label">AI INFERENCE ACCURACY</div>
+        </div>
+        <div class="telemetry-card">
+          <div class="telemetry-num" data-target="45" data-suffix="ms" data-decimals="0">0ms</div>
+          <div class="telemetry-label">EDGE ROUTING LATENCY</div>
+        </div>
+        <div class="telemetry-card">
+          <div class="telemetry-num" data-target="100" data-suffix="%" data-decimals="0">0%</div>
+          <div class="telemetry-label">STRICT MONOCHROME PURITY</div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ========================================================================
+       SECTION 01: ARCHITECTURES & PROJECTS
+       ======================================================================== -->
+  <section id="projects" class="section">
+    <div class="container">
+      <div class="section-header reveal-on-scroll">
+        <span class="section-tag">// SECTION 01 // PRODUCTION PLATFORMS & APPLIED AI</span>
+        <h2 class="section-title">FEATURED ARCHITECTURES</h2>
+      </div>
+
+      <div class="projects-grid" id="projects-grid">
+        <!-- Rendered dynamically by scripts/projects.js -->
+      </div>
+    </div>
+  </section>
+
+  <!-- ========================================================================
+       SECTION 02: TECHNICAL SKILLS MATRIX
+       ======================================================================== -->
+  <section id="skills" class="section">
+    <div class="container">
+      <div class="section-header reveal-on-scroll">
+        <span class="section-tag">// SECTION 02 // TECHNICAL MATRIX</span>
+        <h2 class="section-title">LANGUAGES, FRAMEWORKS & RUNTIMES</h2>
+        <p class="section-desc">
+          Core engineering competencies spanning systems programming, deep neural networks, computer vision, and distributed cloud platforms.
+        </p>
+      </div>
+
+      <div class="skills-container">
+        
+        <!-- Category 1: Languages & Core -->
+        <div class="skill-category-card reveal-on-scroll delay-1">
+          <div class="category-header">
+            <div class="category-icon">
+              <svg viewBox="0 0 24 24"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+            </div>
+            <h3 class="category-title">LANGUAGES & RUNTIMES</h3>
+          </div>
+          <div class="skill-items-list">
+            <div class="skill-item">
+              <div class="skill-info">
+                <span class="skill-name">Python (Advanced & Scientific)</span>
+                <span class="skill-level">96%</span>
+              </div>
+              <div class="skill-bar-track">
+                <div class="skill-bar-fill" data-level="96%"></div>
+              </div>
+            </div>
+            <div class="skill-item">
+              <div class="skill-info">
+                <span class="skill-name">Java (Core & Vision Pipelines)</span>
+                <span class="skill-level">90%</span>
+              </div>
+              <div class="skill-bar-track">
+                <div class="skill-bar-fill" data-level="90%"></div>
+              </div>
+            </div>
+            <div class="skill-item">
+              <div class="skill-info">
+                <span class="skill-name">JavaScript & TypeScript (ESNext)</span>
+                <span class="skill-level">95%</span>
+              </div>
+              <div class="skill-bar-track">
+                <div class="skill-bar-fill" data-level="95%"></div>
+              </div>
+            </div>
+            <div class="skill-item">
+              <div class="skill-info">
+                <span class="skill-name">SQL (PostgreSQL / Relational)</span>
+                <span class="skill-level">94%</span>
+              </div>
+              <div class="skill-bar-track">
+                <div class="skill-bar-fill" data-level="94%"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Category 2: Python Data & ML Libraries -->
+        <div class="skill-category-card reveal-on-scroll delay-2">
+          <div class="category-header">
+            <div class="category-icon">
+              <svg viewBox="0 0 24 24"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"/><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"/></svg>
+            </div>
+            <h3 class="category-title">PYTHON DATA & ML</h3>
+          </div>
+          <div class="skill-items-list">
+            <div class="skill-item">
+              <div class="skill-info">
+                <span class="skill-name">Pandas & NumPy Arrays</span>
+                <span class="skill-level">96%</span>
+              </div>
+              <div class="skill-bar-track">
+                <div class="skill-bar-fill" data-level="96%"></div>
+              </div>
+            </div>
+            <div class="skill-item">
+              <div class="skill-info">
+                <span class="skill-name">Scikit-learn (Regression & Classifiers)</span>
+                <span class="skill-level">94%</span>
+              </div>
+              <div class="skill-bar-track">
+                <div class="skill-bar-fill" data-level="94%"></div>
+              </div>
+            </div>
+            <div class="skill-item">
+              <div class="skill-info">
+                <span class="skill-name">OpenCV (Computer Vision)</span>
+                <span class="skill-level">92%</span>
+              </div>
+              <div class="skill-bar-track">
+                <div class="skill-bar-fill" data-level="92%"></div>
+              </div>
+            </div>
+            <div class="skill-item">
+              <div class="skill-info">
+                <span class="skill-name">Matplotlib, Seaborn & SciPy</span>
+                <span class="skill-level">90%</span>
+              </div>
+              <div class="skill-bar-track">
+                <div class="skill-bar-fill" data-level="90%"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Category 3: Deep Learning & Vision -->
+        <div class="skill-category-card reveal-on-scroll delay-3">
+          <div class="category-header">
+            <div class="category-icon">
+              <svg viewBox="0 0 24 24"><polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 17 12 22 22 17"/><polyline points="2 12 12 17 22 12"/></svg>
+            </div>
+            <h3 class="category-title">DEEP LEARNING & VISION</h3>
+          </div>
+          <div class="skill-items-list">
+            <div class="skill-item">
+              <div class="skill-info">
+                <span class="skill-name">PyTorch, TensorFlow & YOLO</span>
+                <span class="skill-level">95%</span>
+              </div>
+              <div class="skill-bar-track">
+                <div class="skill-bar-fill" data-level="95%"></div>
+              </div>
+            </div>
+            <div class="skill-item">
+              <div class="skill-info">
+                <span class="skill-name">Medical Examination & Disease AI (CNNs)</span>
+                <span class="skill-level">96%</span>
+              </div>
+              <div class="skill-bar-track">
+                <div class="skill-bar-fill" data-level="96%"></div>
+              </div>
+            </div>
+            <div class="skill-item">
+              <div class="skill-info">
+                <span class="skill-name">Digital Image Enhancement</span>
+                <span class="skill-level">94%</span>
+              </div>
+              <div class="skill-bar-track">
+                <div class="skill-bar-fill" data-level="94%"></div>
+              </div>
+            </div>
+            <div class="skill-item">
+              <div class="skill-info">
+                <span class="skill-name">Smart Agriculture AI Models</span>
+                <span class="skill-level">92%</span>
+              </div>
+              <div class="skill-bar-track">
+                <div class="skill-bar-fill" data-level="92%"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Category 4: Web, Mobile, Cloud & LLMs -->
+        <div class="skill-category-card reveal-on-scroll delay-4">
+          <div class="category-header">
+            <div class="category-icon">
+              <svg viewBox="0 0 24 24"><rect x="5" y="2" width="14" height="20" rx="2" ry="2"/><line x1="12" y1="18" x2="12.01" y2="18"/></svg>
+            </div>
+            <h3 class="category-title">PLATFORMS, CLOUD & LLMS</h3>
+          </div>
+          <div class="skill-items-list">
+            <div class="skill-item">
+              <div class="skill-info">
+                <span class="skill-name">React 18/19 & React Native Expo</span>
+                <span class="skill-level">95%</span>
+              </div>
+              <div class="skill-bar-track">
+                <div class="skill-bar-fill" data-level="95%"></div>
+              </div>
+            </div>
+            <div class="skill-item">
+              <div class="skill-info">
+                <span class="skill-name">Node.js, Express & REST APIs</span>
+                <span class="skill-level">92%</span>
+              </div>
+              <div class="skill-bar-track">
+                <div class="skill-bar-fill" data-level="92%"></div>
+              </div>
+            </div>
+            <div class="skill-item">
+              <div class="skill-info">
+                <span class="skill-name">Supabase & PostgreSQL RLS</span>
+                <span class="skill-level">96%</span>
+              </div>
+              <div class="skill-bar-track">
+                <div class="skill-bar-fill" data-level="96%"></div>
+              </div>
+            </div>
+            <div class="skill-item">
+              <div class="skill-info">
+                <span class="skill-name">LLMs & Applied AI Solutions</span>
+                <span class="skill-level">90%</span>
+              </div>
+              <div class="skill-bar-track">
+                <div class="skill-bar-fill" data-level="90%"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ========================================================================
+       SECTION 03: OPERATIONAL PRINCIPLES
+       ======================================================================== -->
+  <section id="about" class="section">
+    <div class="container">
+      <div class="section-header reveal-on-scroll">
+        <span class="section-tag">// SECTION 03 // ARCHITECTURAL DOCTRINE</span>
+        <h2 class="section-title">ENGINEERING PRINCIPLES</h2>
+        <p class="section-desc">
+          Methodologies guiding software architecture, neural network training, and commercial deployment from first principles.
+        </p>
+      </div>
+
+      <div class="doctrine-grid">
+        
+        <div class="doctrine-card telemetry-card reveal-on-scroll delay-1">
+          <span class="doctrine-tag">// DOCTRINE 01</span>
+          <h3 class="doctrine-title">HIGH-PERFORMANCE & REAL-TIME SPEED</h3>
+          <p class="doctrine-desc">
+            Whether accelerating deep learning inference pipelines in PyTorch, developing real-time OpenCV computer vision filters, or engineering high-throughput backend APIs, systems are built with strict execution efficiency, zero bloat, and sub-second response times.
+          </p>
+        </div>
+
+        <div class="doctrine-card telemetry-card reveal-on-scroll delay-2">
+          <span class="doctrine-tag">// DOCTRINE 02</span>
+          <h3 class="doctrine-title">PRODUCTION-GRADE RESILIENCE</h3>
+          <p class="doctrine-desc">
+            Commercial platforms like servcate.com and mrbiller.online require rigorous defensive programming: PostgreSQL Row-Level Security (RLS) policies, multi-tenant data segregation, and clean error boundaries.
+          </p>
+        </div>
+
+        <div class="doctrine-card telemetry-card reveal-on-scroll delay-3">
+          <span class="doctrine-tag">// DOCTRINE 03</span>
+          <h3 class="doctrine-title">REAL-WORLD PROBLEM SOLVING</h3>
+          <p class="doctrine-desc">
+            From detecting brain tumors in MRI scans to building smart agriculture AI models that predict crop yields and diagnose plant diseases, development focuses on solving high-impact real-world challenges with clean code and mathematical precision.
+          </p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ========================================================================
+       SECTION 04: DIRECT TRANSMISSION / CONTACT
+       ======================================================================== -->
+  <section id="contact" class="section">
+    <div class="container">
+      <div class="section-header reveal-on-scroll">
+        <span class="section-tag">// SECTION 04 // DIRECT CHANNEL</span>
+        <h2 class="section-title">TRANSMIT PACKET</h2>
+        <p class="section-desc">
+          Initiate a direct transmission to collaborate, discuss engineering architecture, or explore technical opportunities.
+        </p>
+      </div>
+
+      <div class="contact-container reveal-on-scroll">
+        <!-- Contact Meta Info -->
+        <div class="contact-info-card">
+          <h3 style="font-family: var(--font-display); font-size: 1.2rem; font-weight: 700;">COMMUNICATION CHANNELS</h3>
+          <p style="font-size: 0.95rem; margin-top: 6px;">Available for high-impact software engineering roles, commercial architectures, and AI consulting.</p>
+
+          <div class="contact-meta-list">
+            
+            <div class="contact-meta-item">
+              <div class="contact-icon">
+                <svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+              </div>
+              <div class="contact-detail">
+                <span class="contact-label">TRANSMISSION EMAIL</span>
+                <span class="contact-val">vnkm2004@gmail.com</span>
+                <button class="copy-email-btn" id="copy-email-btn" title="Copy to Clipboard">
+                  <svg viewBox="0 0 24 24"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+                  <span class="copy-text">COPY EMAIL</span>
+                </button>
+              </div>
+            </div>
+
+            <div class="contact-meta-item">
+              <div class="contact-icon">
+                <svg viewBox="0 0 24 24"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
+              </div>
+              <div class="contact-detail">
+                <span class="contact-label">GITHUB PROFILE</span>
+                <a href="https://github.com/vnkm2004" target="_blank" rel="noopener noreferrer" class="contact-val" style="text-decoration: underline;" title="Visit GitHub Profile">
+                  github.com/vnkm2004
+                </a>
+              </div>
+            </div>
+
+            <div class="contact-meta-item">
+              <div class="contact-icon">
+                <svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+              </div>
+              <div class="contact-detail">
+                <span class="contact-label">GEOGRAPHIC LOCATION</span>
+                <span class="contact-val">Bangalore, India [IST // UTC+5:30]</span>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+        <!-- Transmission Form -->
+        <form class="contact-form" id="contact-form">
+          <div class="form-group">
+            <label class="form-label" for="sender-name">// SENDER IDENTITY</label>
+            <input class="form-input" type="text" id="sender-name" placeholder="E.g. Sarah Connor / Tech Lead" required>
+            <input class="form-input" type="text" id="sender-name" placeholder="Your name" required>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="sender-email">// RETURN TRANSMISSION ADDRESS</label>
+            <input class="form-input" type="email" id="sender-email" placeholder="name@domain.com" required>
+            <input class="form-input" type="email" id="sender-email" placeholder="Your mail" required>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="sender-message">// ENCODED PAYLOAD</label>
+            <textarea class="form-textarea" id="sender-message" placeholder="Provide mission parameters, project architecture details, or inquiry..." required></textarea>
+            <textarea class="form-textarea" id="sender-message" placeholder="Your message..." required></textarea>
+          </div>
+
+          <button type="submit" class="btn-primary" style="align-self: flex-start;">
+            <span>TRANSMIT PACKET</span>
+            <svg viewBox="0 0 24 24"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+          </button>
+
+          <div id="form-status" style="display: none; padding-top: 10px;"></div>
+        </form>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ========================================================================
+       FOOTER
+       ======================================================================== -->
+  <footer class="site-footer">
+    <div class="container footer-content">
+      <div class="footer-copy">
+        [ VNKM // VISHWANATH NAIK K M ] — ALL SYSTEMS OPERATIONAL. STRICT MONOCHROME ARCHITECTURE.
+      </div>
+      <div class="footer-links">
+        <a href="#hero" class="footer-link">// RETURN TOP</a>
+        <a href="https://github.com/vnkm2004" target="_blank" rel="noopener noreferrer" class="footer-link">// GITHUB</a>
+        <button class="footer-link" data-action="open-terminal">// LAUNCH CLI</button>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ========================================================================
+       CYBER TERMINAL MODAL DRAWER
+       ======================================================================== -->
+  <div class="terminal-modal-backdrop" id="terminal-modal-backdrop" role="dialog" aria-modal="true" aria-label="Cyber CLI Terminal">
+    <div class="terminal-window">
+      <div class="terminal-header">
+        <div class="terminal-title">
+          <svg viewBox="0 0 24 24" style="width: 14px; height: 14px; stroke: currentColor; fill: none;"><polyline points="4 17 10 11 4 5"/><line x1="12" y1="19" x2="20" y2="19"/></svg>
+          <span>VNKM ROBOTIC SHELL // SESSION: AUTHENTICATED</span>
+        </div>
+        <button class="terminal-close-btn" id="terminal-close-btn" aria-label="Close Terminal">
+          <svg viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+        </button>
+      </div>
+      <div class="terminal-body">
+        <div class="terminal-output" id="terminal-output"></div>
+        <div class="terminal-input-row">
+          <span class="terminal-prompt">vnkm@root:~$</span>
+          <input type="text" class="terminal-input" id="terminal-input" autocomplete="off" spellcheck="false">
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ========================================================================
+       PROJECT BLUEPRINT MODAL
+       ======================================================================== -->
+  <div class="blueprint-modal-backdrop" id="blueprint-modal-backdrop" role="dialog" aria-modal="true" aria-label="Project Blueprint">
+    <div class="blueprint-modal">
+      <div class="blueprint-modal-header">
+        <h3 class="blueprint-modal-title" id="blueprint-modal-title">SYSTEM BLUEPRINT</h3>
+        <button class="icon-btn" id="blueprint-modal-close" aria-label="Close Blueprint">
+          <svg viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+        </button>
+      </div>
+      <div class="blueprint-modal-body" id="blueprint-modal-content">
+        <!-- Rendered dynamically by scripts/projects.js -->
+      </div>
+    </div>
+  </div>
+
+  <!-- Scripts -->
+  <script src="scripts/theme.js"></script>
+  <script src="scripts/gemini-flow.js"></script>
+  <script src="scripts/projects.js"></script>
+  <script src="scripts/terminal.js"></script>
+  <script src="scripts/main.js"></script>
+</body>
+</html>
+

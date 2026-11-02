@@ -1,0 +1,19 @@
+# CLAUDE.md - TASK COMPLETION LOG
+
+## PROJECT: VNKM (Vishwanath Naik K M) Robotic Portfolio & Gemini Flow Engine
+
+### MOBILE RESPONSIVENESS OVERHAUL:
+- **Top Navigation Bar**: Replaced horizontal desktop pill overflow on mobile with a robotic hamburger button and a frosted glass mobile navigation drawer (`.mobile-nav-drawer`). Automatically closes on section selection, outside tap, or Escape.
+- **Gemini Flow Floating Dock**: Completely resolved the right-side text clipping (`CONTA...`). Applied flexible responsive pill padding, micro-typography (`0.62rem` / `0.58rem`), and `overflow-x: auto; scrollbar-width: none` so all 4 modes (`AURORA`, `STREAM`, `RIBBONS`, `LATTICE`) plus `[ CONTACT ME ]` fit comfortably down to 320px screens.
+- **Hero & Telemetry**: Scaled `VNKM` hero title with dynamic `clamp()` typography, stacked hero CTA buttons for thumb ergonomics, and organized telemetry into a compact 2x2 HUD matrix instead of 4 tall stacked cards.
+- **Sections & Modals**: Converted projects, skills, doctrine, and transmission forms to responsive single-column layouts with optimized mobile padding and full touch compatibility.
+- **Zero Lateral Overflow**: Enforced `overflow-x: hidden` and `touch-action: pan-y` across all viewports.
+- **Removed Audio Control**: Permanently removed the audio toggle button and speaker icon from the top navigation bar per user request, leaving only the Cyber CLI trigger (`>_`) and theme switcher for a cleaner minimalist header.
+- **Cyber CLI Speed-Dials**: Added numeric shortcut speed-dials to the terminal shell (`911` for emergency help/manifest, `1` / `101` for Bio, `2` / `202` for Skills, `3` / `303` for Projects, `3 1`-`3 6` or `31`-`36` for Project Blueprints, `4` / `411` / `100` for Contact/Email, `5` to toggle Light/Dark theme, `6` to cycle flow animations, `7` for Video Graft, `00` / `8` to clear, and `99` to exit).
+- **Doctrine & Telemetry Upgrades**: Replaced gaming/display jargon "60 FPS" with engineering-centric terminology: Doctrine 01 is now **HIGH-PERFORMANCE & REAL-TIME SPEED** (focusing on PyTorch AI inference acceleration, OpenCV vision pipelines, and high-throughput APIs), and Hero Telemetry now displays **98.5% AI INFERENCE ACCURACY**.
+- **Formal Professional Tone**: Removed the phrase "clinical-grade" and eliminated the overuse of the first-person pronoun "I" across project summaries, architectural specifications, hero introductions, and principles. Replaced informal phrasing with executive engineering verbs ("Architected", "Developed", "Engineered", "Implemented", "Constructed", "Trained").
+- **Contact & Profile Update**: Updated transmission email to `vnkm2004@gmail.com` across HTML, clipboard copy, form dispatch, and terminal. Fixed GitHub profile link in the contact section to be a direct, public link to `https://github.com/vnkm2004` (removing the "(Private)" label and modal trigger from the profile itself, while keeping private repository notices strictly for proprietary source code buttons).
+- **Contact Form Input Placeholders**: Preserved robotic technical labels (`// SENDER IDENTITY`, `// RETURN TRANSMISSION ADDRESS`, `// ENCODED PAYLOAD`, `TRANSMIT PACKET`) and updated strictly the inside placeholder text to clean, minimal prompts (`Your name`, `Your mail`, `Your message...`).
+- **Contact Form Labels**: Replaced sci-fi placeholders/labels with standard, user-friendly labels: `// YOUR NAME`, `// YOUR EMAIL`, and `// YOUR MESSAGE`, with clean placeholders and `SEND MESSAGE` button.
+- **Contact Form Input Placeholders**: Preserved robotic technical labels (`// SENDER IDENTITY`, `// RETURN TRANSMISSION ADDRESS`, `// ENCODED PAYLOAD`, `TRANSMIT PACKET`) and updated strictly the inside placeholder text to clean, minimal prompts (`Your name`, `Your mail`, `Your message...`).
+- **Strict Compliance**: Zero emojis maintained, strict monochromatic light/dark themes preserved.

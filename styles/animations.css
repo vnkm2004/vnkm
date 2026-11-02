@@ -1,0 +1,151 @@
+/* ==========================================================================
+   VNKM PORTFOLIO - SILKY SMOOTH ANIMATIONS & FLUID CURSOR
+   Smooth 60fps micro-interactions, circular fluid hover, organic transitions
+   Zero boxy corners, zero emojis
+   ========================================================================== */
+
+/* Silky Circular Fluid Cursor */
+#custom-cursor {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 6px;
+  height: 6px;
+  background-color: var(--cursor-dot);
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 9999;
+  transform: translate(-50%, -50%);
+  transition: width 0.2s cubic-bezier(0.16, 1, 0.3, 1),
+    height 0.2s cubic-bezier(0.16, 1, 0.3, 1),
+    background-color var(--transition-fast);
+}
+
+#custom-cursor-follower {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 34px;
+  height: 34px;
+  border: 1px solid var(--cursor-ring);
+  background-color: transparent;
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 9998;
+  transform: translate(-50%, -50%);
+  transition: width 0.28s cubic-bezier(0.16, 1, 0.3, 1),
+    height 0.28s cubic-bezier(0.16, 1, 0.3, 1),
+    border-color 0.25s cubic-bezier(0.16, 1, 0.3, 1),
+    background-color 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Hover state - soft fluid expansion (zero boxes) */
+body.cursor-hover #custom-cursor {
+  width: 10px;
+  height: 10px;
+  background-color: var(--accent);
+}
+
+body.cursor-hover #custom-cursor-follower {
+  width: 52px;
+  height: 52px;
+  border-color: var(--border-strong);
+  background-color: var(--accent-soft);
+}
+
+/* Hide on touch devices */
+@media (hover: none) and (pointer: coarse) {
+
+  #custom-cursor,
+  #custom-cursor-follower {
+    display: none !important;
+  }
+}
+
+/* Scroll reveal classes with buttery smooth easing */
+.reveal-on-scroll {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.reveal-on-scroll.revealed {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Stagger delays */
+.delay-1 {
+  transition-delay: 100ms;
+}
+
+.delay-2 {
+  transition-delay: 200ms;
+}
+
+.delay-3 {
+  transition-delay: 300ms;
+}
+
+.delay-4 {
+  transition-delay: 400ms;
+}
+
+/* Radar Sweep Line in Hero - Ultra soft */
+.radar-sweep {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--text-primary), transparent);
+  animation: radar-anim 6s linear infinite;
+  opacity: 0.08;
+  pointer-events: none;
+}
+
+@keyframes radar-anim {
+  0% {
+    top: 0%;
+    opacity: 0;
+  }
+
+  15% {
+    opacity: 0.12;
+  }
+
+  85% {
+    opacity: 0.12;
+  }
+
+  100% {
+    top: 100%;
+    opacity: 0;
+  }
+}
+
+/* Soft Circular Fluid Click Ripple */
+.cyber-ripple {
+  position: absolute;
+  border: 1px solid var(--text-primary);
+  border-radius: 50%;
+  /* Smooth circle, no box */
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+  animation: ripple-out 0.65s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  z-index: 9990;
+}
+
+@keyframes ripple-out {
+  0% {
+    width: 0;
+    height: 0;
+    opacity: 0.5;
+  }
+
+  100% {
+    width: 90px;
+    height: 90px;
+    opacity: 0;
+  }
+}

@@ -6,7 +6,7 @@
  * ============================================================================
  */
 
-document.addEventListener('DOMContentLoaded', () => {
+function boot() {
   // Boot Gemini Flow Engine
   if (window.initGeminiFlow) {
     window.initGeminiFlow();
@@ -22,7 +22,13 @@ document.addEventListener('DOMContentLoaded', () => {
   initContactForm();
   initClickRipple();
   initStatsCounter();
-});
+}
+
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', boot);
+} else {
+  boot();
+}
 
 /**
  * Custom Robotic Cursor & Follower
@@ -340,42 +346,62 @@ function initContactForm() {
 /**
  * Telemetry Numbers Counter
  */
+function animateStat(el) {
+  if (el.dataset.animated === 'true') return;
+  el.dataset.animated = 'true';
+
+  const target = parseFloat(el.getAttribute('data-target'));
+  if (isNaN(target)) return;
+  const suffix = el.getAttribute('data-suffix') || '';
+  const decimals = parseInt(el.getAttribute('data-decimals') || '0', 10);
+  const duration = 1600;
+  const startTime = performance.now();
+
+  function update(now) {
+    const elapsed = now - startTime;
+    const progress = Math.min(elapsed / duration, 1);
+    const easeProgress = 1 - Math.pow(1 - progress, 3);
+    const current = easeProgress * target;
+
+    el.textContent = `${current.toFixed(decimals)}${suffix}`;
+
+    if (progress < 1) {
+      requestAnimationFrame(update);
+    } else {
+      el.textContent = `${target.toFixed(decimals)}${suffix}`;
+    }
+  }
+
+  el.textContent = `0${suffix}`;
+  requestAnimationFrame(update);
+}
+
 function initStatsCounter() {
   const statNumbers = document.querySelectorAll('.telemetry-num[data-target]');
   if (!statNumbers.length) return;
 
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        const el = entry.target;
-        const target = parseFloat(el.getAttribute('data-target'));
-        const suffix = el.getAttribute('data-suffix') || '';
-        const decimals = parseInt(el.getAttribute('data-decimals') || '0', 10);
-        let current = 0;
-        const duration = 1500;
-        const startTime = performance.now();
-
-        function update(now) {
-          const elapsed = now - startTime;
-          const progress = Math.min(elapsed / duration, 1);
-          const easeProgress = 1 - Math.pow(1 - progress, 3);
-          current = easeProgress * target;
-
-          el.textContent = `${current.toFixed(decimals)}${suffix}`;
-
-          if (progress < 1) {
-            requestAnimationFrame(update);
-          } else {
-            el.textContent = `${target.toFixed(decimals)}${suffix}`;
-          }
+  if ('IntersectionObserver' in window) {
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          animateStat(entry.target);
+          observer.unobserve(entry.target);
         }
+      });
+    }, { threshold: 0.05, rootMargin: '60px 0px 60px 0px' });
 
-        requestAnimationFrame(update);
-        observer.unobserve(el);
+    statNumbers.forEach(s => observer.observe(s));
+  } else {
+    statNumbers.forEach(s => animateStat(s));
+  }
+
+  // Safety fallback: ensure all stats animate even if viewport observer didn't trigger
+  setTimeout(() => {
+    statNumbers.forEach(s => {
+      if (s.dataset.animated !== 'true') {
+        animateStat(s);
       }
     });
-  }, { threshold: 0.5 });
-
-  statNumbers.forEach(s => observer.observe(s));
+  }, 1000);
 }
 

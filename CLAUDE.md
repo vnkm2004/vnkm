@@ -18,3 +18,11 @@
 - **Contact Form Input Placeholders**: Preserved robotic technical labels (`// SENDER IDENTITY`, `// RETURN TRANSMISSION ADDRESS`, `// ENCODED PAYLOAD`, `TRANSMIT PACKET`) and updated strictly the inside placeholder text to clean, minimal prompts (`Your name`, `Your mail`, `Your message...`).
 - **Strict Compliance**: Zero emojis maintained, strict monochromatic light/dark themes preserved.
 - **Vite Bundler & Telemetry Numbers Fix**: Fixed hero telemetry cards displaying `0%` on production deployments (`https://vnkm.in`). Vite omitted unbundled `<script src="...">` tags without `type="module"`, causing SPA 404 fallbacks that failed to execute script logic. Converted all script tags to `type="module"`, mirrored scripts to `public/scripts/` for static fallback access, updated HTML to pre-render target values (`99.98%`, `98.5%`, `45ms`, `100%`), added resilient DOM ready booting, and introduced responsive IntersectionObserver thresholds (`0.05` with `60px` rootMargin) and safety timeout fallbacks. Cleaned up duplicate contact form inputs. Pushed commit `fc94adb` to `main`.
+- **Project Cards & Aurora Flow Mobile/Desktop Restoration**:
+  - Pre-rendered all 6 project cards statically into `index.html` inside `#projects-grid` so they are immediately visible across desktop and mobile devices without waiting for JS execution.
+  - Removed redundant `.site-footer` that clashed with the floating dock per user request.
+  - Fixed canvas resize compounding scale bug in `GeminiFlowEngine.resize()` by resetting the transformation matrix (`ctx.setTransform(1, 0, 0, 1, 0, 0)`) prior to scaling by DPR, preventing wave strokes from blowing off-screen upon mobile address bar scroll resizes.
+  - Added mobile touch event listeners (`touchstart`, `touchmove`, `touchend`) to `GeminiFlowEngine` and boosted aurora wave stroke visibility.
+  - Applied frosted glass background (`var(--bg-glass-heavy)`) and border to mobile `.site-header` so scrolling content never awkwardly overlaps the top logo and navigation icons.
+  - Added safe fallback `opacity: 1` to `.reveal-on-scroll` so section headers are never hidden if hydration is delayed.
+  - Added `140px` bottom padding to `#contact.section` for clean spacing above the floating dock.

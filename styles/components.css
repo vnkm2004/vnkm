@@ -853,6 +853,10 @@
 /* ==========================================================================
    CONTACT SECTION
    ========================================================================== */
+#contact.section {
+  padding-bottom: 140px;
+}
+
 .contact-container {
   display: grid;
   grid-template-columns: 1fr 1.2fr;
@@ -1233,6 +1237,10 @@
 
   .site-header {
     padding: 12px 0;
+    background: var(--bg-glass-heavy);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border-bottom: 1px solid var(--border-subtle);
   }
 
   .site-header.scrolled {

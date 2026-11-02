@@ -7,6 +7,8 @@
  */
 
 function boot() {
+  document.documentElement.classList.add('js-ready');
+
   // Boot Gemini Flow Engine
   if (window.initGeminiFlow) {
     window.initGeminiFlow();

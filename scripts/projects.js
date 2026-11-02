@@ -176,6 +176,7 @@ class ProjectManager {
   renderProjectsGrid() {
     const grid = document.getElementById('projects-grid');
     if (!grid) return;
+    if (grid.children.length > 0) return; // Keep pre-rendered HTML cards
 
     grid.innerHTML = this.projects.map(p => `
       <article class="project-card" data-project-id="${p.id}">

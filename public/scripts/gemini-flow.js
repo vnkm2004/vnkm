@@ -56,6 +56,7 @@ class GeminiFlowEngine {
     this.dpr = Math.min(window.devicePixelRatio || 1, 2);
     this.canvas.width = this.width * this.dpr;
     this.canvas.height = this.height * this.dpr;
+    this.ctx.setTransform(1, 0, 0, 1, 0, 0);
     this.ctx.scale(this.dpr, this.dpr);
   }
 
@@ -90,6 +91,26 @@ class GeminiFlowEngine {
     window.addEventListener('mouseleave', () => {
       this.mouse.active = false;
     });
+
+    window.addEventListener('touchstart', (e) => {
+      if (e.touches && e.touches[0]) {
+        this.mouse.targetX = e.touches[0].clientX;
+        this.mouse.targetY = e.touches[0].clientY;
+        this.mouse.active = true;
+      }
+    }, { passive: true });
+
+    window.addEventListener('touchmove', (e) => {
+      if (e.touches && e.touches[0]) {
+        this.mouse.targetX = e.touches[0].clientX;
+        this.mouse.targetY = e.touches[0].clientY;
+        this.mouse.active = true;
+      }
+    }, { passive: true });
+
+    window.addEventListener('touchend', () => {
+      this.mouse.active = false;
+    }, { passive: true });
 
     // Flow Mode Selector Buttons in Dock
     const modeBtns = document.querySelectorAll('[data-flow-mode]');
@@ -172,8 +193,8 @@ class GeminiFlowEngine {
 
       // PURE STROKE LINE - NO FILL UNDERNEATH
       const strokeAlpha = this.isDark
-        ? (0.2 + Math.sin(t * 0.5 + band) * 0.06 + bandProgress * 0.16)
-        : (0.16 + Math.sin(t * 0.5 + band) * 0.04 + bandProgress * 0.12);
+        ? (0.32 + Math.sin(t * 0.5 + band) * 0.08 + bandProgress * 0.22)
+        : (0.24 + Math.sin(t * 0.5 + band) * 0.06 + bandProgress * 0.18);
 
       ctx.beginPath();
       ctx.moveTo(points[0].x, points[0].y);
@@ -390,7 +411,17 @@ class GeminiFlowEngine {
   }
 }
 
-// Export initialization hook
-window.initGeminiFlow = () => {
-  window.geminiFlowInstance = new GeminiFlowEngine();
-};
+// Auto-boot or export initialization hook
+function bootGeminiFlow() {
+  if (!window.geminiFlowInstance && document.getElementById('gemini-flow-canvas')) {
+    window.geminiFlowInstance = new GeminiFlowEngine();
+  }
+}
+
+window.initGeminiFlow = bootGeminiFlow;
+
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', bootGeminiFlow);
+} else {
+  bootGeminiFlow();
+}
